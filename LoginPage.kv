@@ -1,0 +1,90 @@
+<LoginManager>:
+    LoginPageScreen:
+        name: "login page"
+    LandingScreen:
+        name: "landing"
+    RegisterScreen:
+        name: "Register"
+
+
+<LoginPageScreen>
+    BoxLayout:
+        spacing: "10dp"
+        orientation: "vertical"
+        Label:
+            text: "login"
+        GridLayout:
+            orientation: "lr-tb"
+            cols: 2
+            rows: 2
+            Label:
+                id: username
+                text: "username"
+                size_hint: .2,.2
+            TextInput:
+                id: username
+                size_hint: .3, .1
+            Label:
+                text: "password"
+                size_hint: .2,.2
+            TextInput:
+                id: password
+                size_hint: .3,.1
+        BoxLayout:
+            spacing: "10dp"
+            orientation: "horizontal"
+            Button:
+                text: "Enter"
+                on_release: root.land(username.text,password.text)
+            Button:
+                text: "register new account"
+                on_release: root.register()
+            Label:
+                id: invalid
+                text: ""
+
+
+
+<LandingScreen>
+    BoxLayout:
+        spacing: "10dp"
+        orientation: "vertical"
+        Label:
+            text: "welcome"
+        Button:
+            text: "logout"
+            on_release: root.land_to_login()
+
+<RegisterScreen>
+    BoxLayout
+        spacing:"10dp"
+        orientation: "vertical"
+        Label:
+            text:"new account"
+        GridLayout:
+            orientation: "lr-tb"
+            cols: 2
+            rows: 3
+            Label:
+                text: "Enter New Username"
+            TextInput:
+                id: new_username
+            Label:
+                text: "Enter New Password"
+            TextInput:
+                id: new_password
+            Label:
+                text: "reenter new password"
+            TextInput:
+                id: reenter_new_password
+        Label:
+            text:"Passwords must contain one capital letter, lowercase letter, number, specialized character"
+        Button:
+            text: "Enter"
+            on_release: root.register_to_login(new_username.text, new_password.text, reenter_new_password.text)
+        Label:
+            text: ""
+            id: error
+
+
+
